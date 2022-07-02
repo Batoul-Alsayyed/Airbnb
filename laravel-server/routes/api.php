@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\StaysController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\FavoriteController;
 
 /*
 |--------------------------------------------------------------------------
@@ -45,4 +46,12 @@ Route::group([
     Route::post('/add_category', [CategoryController::class, 'addCategory']);
     Route::get('/categories', [CategoryController::class, 'getAllCategories']);
    Route::post('/getCategoryById', [CategoryController::class, 'getCategoryById']);
+});
+
+Route::group([
+    'middleware' => 'api',
+    'prefix' => 'admin'
+], function ($router) {
+    Route::post('/add_favorite', [FavoriteController::class, 'addFavorite']);
+   Route::post('/getNumberOfFavoritesById', [FavoriteController::class, 'getNumberOfFavoritesByStayId']);
 });
