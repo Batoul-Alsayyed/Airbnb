@@ -21,8 +21,8 @@ class CreateStaysTable extends Migration
             $table->string('date');
             $table->decimal('rate');
             $table->integer('category_id');
-            $table->string('image_link');
-
+            $table->integer('number_of_likes');
+            
             $table->timestamps();
         });
     }
