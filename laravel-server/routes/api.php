@@ -3,6 +3,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\StaysController;
+use App\Http\Controllers\CategoryController;
 
 /*
 |--------------------------------------------------------------------------
@@ -33,4 +34,15 @@ Route::group([
     Route::post('/add_stay', [StaysController::class, 'addStay']);
     Route::get('/stays', [StaysController::class, 'getAllStays']);
    Route::post('/getStayById', [StaysController::class, 'getStayById']);
+});
+
+
+
+Route::group([
+    'middleware' => 'api',
+    'prefix' => 'admin'
+], function ($router) {
+    Route::post('/add_category', [CategoryController::class, 'addCategory']);
+    Route::get('/categories', [CategoryController::class, 'getAllCategories']);
+   Route::post('/getCategoryById', [CategoryController::class, 'getCategoryById']);
 });
