@@ -16,7 +16,7 @@ class Stay extends Authenticatable implements JWTSubject
         'date',
         'rate',
         'category_id',
-        'image_link'
+        'number_of_likes',
     ];
     
     
