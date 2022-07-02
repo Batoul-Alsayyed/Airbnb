@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\StaysController;
 use App\Http\Controllers\CategoryController;
-use App\Http\Controllers\FavoriteController;
+use App\Http\Controllers\ImageController;
 
 /*
 |--------------------------------------------------------------------------
@@ -35,6 +35,8 @@ Route::group([
     Route::post('/add_stay', [StaysController::class, 'addStay']);
     Route::get('/stays', [StaysController::class, 'getAllStays']);
    Route::post('/getStayById', [StaysController::class, 'getStayById']);
+   Route::post('/addLike', [StaysController::class, 'addLike']);
+
 });
 
 
@@ -48,10 +50,11 @@ Route::group([
    Route::post('/getCategoryById', [CategoryController::class, 'getCategoryById']);
 });
 
+
 Route::group([
     'middleware' => 'api',
     'prefix' => 'admin'
 ], function ($router) {
-    Route::post('/add_favorite', [FavoriteController::class, 'addFavorite']);
-   Route::post('/getNumberOfFavoritesById', [FavoriteController::class, 'getNumberOfFavoritesByStayId']);
+    Route::post('/add_image', [ImageController::class, 'addImage']);
+   Route::post('/getImagesByStayId', [ImageController::class, 'getImagesByStayId']);
 });
