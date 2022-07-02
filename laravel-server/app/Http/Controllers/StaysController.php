@@ -41,9 +41,10 @@ class StaysController extends Controller{
             'date' => 'required',
             'rate' =>'required',
             'category_id' =>'required|integer',
-            'image_link' =>'string',
+            'image_link' =>'required|max:5048',
 
         ]);
+
         if($validator->fails()){
             return response()->json($validator->errors()->toJson(), 400);
         }
@@ -51,7 +52,7 @@ class StaysController extends Controller{
                     $validator->validated()
                 ));
         return response()->json([
-            'message' => 'product successfully added',
+            'message' => 'stay successfully added',
             'stay' => $stay
         ], 201);
 
