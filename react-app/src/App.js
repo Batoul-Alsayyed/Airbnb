@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
 import LoginForm from './components/LoginForm';
+import Adminpanel from './components/Adminpanel';
 import axios from 'axios';
 
 function App() {
@@ -53,12 +54,18 @@ alert('anauthorized user!')
   return (
     <div className="App">
       {(user.email !="") ? (
+        // <div className='welcome'>
         <div className='welcome'>
-          <h2>Welcome, <span>{user.name}</span></h2>
-          <button onClick={Logout}>Logout</button>
+          
+          {/* load admin panel component */}
+          <Adminpanel></Adminpanel>
+          {/* <button onClick={Logout}>Logout</button> */}
           </div>
       ) : (
-        <LoginForm Login={Login} error={error}></LoginForm>
+       
+         <LoginForm Login={Login} error={error}></LoginForm>
+        
+    
       )}
     </div>
   );
