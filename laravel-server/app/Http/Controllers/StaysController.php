@@ -34,6 +34,7 @@ class StaysController extends Controller{
 
     }
     public function addStay(Request $request){
+
         $validator = Validator::make($request->all(), [
             'name' => 'required|string|between:2,100',
             'description'=> 'required|string',
@@ -41,16 +42,25 @@ class StaysController extends Controller{
             'date' => 'required',
             'rate' =>'required',
             'category_id' =>'required|integer',
-            'image_link' =>'required|max:5048',
-
         ]);
 
         if($validator->fails()){
             return response()->json($validator->errors()->toJson(), 400);
         }
-        $stay = Stay::create(array_merge(
-                    $validator->validated()
-                ));
+        $stay = Stay::create([
+            'name' => $request->name,
+            'description' => $request->description,
+            'price' => $request->price,
+            'description' => $request->description,
+            'date' => $request->date,
+            'rate' =>$request->rate,
+            'category_id' => $request->category_id,
+            'number_of_likes' => 0
+        ]);
+        // $stay = Stay::create(array_merge(
+        //             $validator->validated()
+
+        //         ));
         return response()->json([
             'message' => 'stay successfully added',
             'stay' => $stay
