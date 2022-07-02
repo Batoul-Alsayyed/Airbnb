@@ -2,6 +2,8 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\StaysController;
+
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -21,4 +23,14 @@ Route::group([
     Route::post('/logout', [AuthController::class, 'logout']);
     Route::post('/refresh', [AuthController::class, 'refresh']);
     Route::get('/user-profile', [AuthController::class, 'userProfile']);    
+});
+
+
+Route::group([
+    'middleware' => 'api',
+    'prefix' => 'admin'
+], function ($router) {
+    Route::post('/add_stay', [StaysController::class, 'addStay']);
+    Route::get('/stays', [StaysController::class, 'getAllStays']);
+   Route::post('/getStayById', [StaysController::class, 'getStayById']);
 });
