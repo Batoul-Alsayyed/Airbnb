@@ -16,11 +16,11 @@ class CategoryController extends Controller{
         $this->middleware('auth:api', ['except' => ['addCategory','getAllCategories','getCategoryById']]);
     }
     public function getAllCategories(){
-        $category = Category::all();
+        $categories = Category::all();
         
         return response()->json([
             "status" => "Success",
-            "Category" => $category
+            "categories" => $categories
         ], 200);
     }
     public function getCategoryById(Request $request){

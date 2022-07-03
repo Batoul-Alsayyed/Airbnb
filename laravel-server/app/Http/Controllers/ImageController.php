@@ -29,7 +29,7 @@ class ImageController extends Controller{
     public function addImage(Request $request){
         $validator = Validator::make($request->all(), [
             'image_link' => 'required|string|between:2,1000',
-            'stay_id'=> 'required|string',
+            'stay_id'=> 'required|integer',
         ]);
         if($validator->fails()){
             return response()->json($validator->errors()->toJson(), 400);
