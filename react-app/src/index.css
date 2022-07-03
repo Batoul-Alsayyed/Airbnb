@@ -253,3 +253,40 @@ table .header-class{
 .hide{
   display: none;
 }
+.nav-container{
+  display: flex;
+  margin: 5px;
+  justify-content: space-around;
+}
+.row{
+  border-bottom: 1.5px solid rgb(163, 153, 153);
+}
+.row img{
+  width: 100px;
+  height: 80px;
+}
+.search-bar{
+  border-radius: 25px;
+  box-shadow: #666;
+  border: 1.5px solid rgb(163, 153, 153);
+  padding: 25px;
+}
+.nav-container-items{
+  display: flex;
+  flex-direction: row;
+}
+.nav-container-items .item{
+  margin: 10px;
+  margin-top: 30px;
+}
+.nav-container-items .box-item{
+  
+  border-radius: 25px;
+  box-shadow: #666;
+  border: 1.5px solid rgb(163, 153, 153);
+  padding: 25px;
+  width: 100px;
+}
+.nav-container-items .box-item .user{
+  margin-left: 13px;
+}
