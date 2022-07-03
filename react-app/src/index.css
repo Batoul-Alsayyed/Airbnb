@@ -176,10 +176,7 @@ form .form-inner input[type="submit"]:hover,
   border-bottom-left-radius: 30px;
 
 }
-.navigation ul li:hover,
-.navigation ul li.hovered{
-  background: white;
-}
+
 .navigation ul li:nth-child(1){
   margin-bottom: 40px;
   pointer-events: none;
