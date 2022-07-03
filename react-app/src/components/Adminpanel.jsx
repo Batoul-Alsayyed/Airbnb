@@ -116,21 +116,11 @@ function Adminpanel() {
     <div className="container3">
     {/*displaying stays and categories tables  */}
     <div class="stays-table">
-    <h1 id='table-title'>Stays Table</h1>
+    <h1 id='table-title'></h1>
   
     <table id='stays_table'>
       <thead>
-        <tr class="header-class">
-          <th>Id </th>
-          <th> Name</th>
-          <th> price</th>
-          <th> Description</th>
-          <th> Date</th>
-          <th>Rate</th>
-          <th> Category Id</th>
-          <th>Number of likes</th>
-          <th> Image link</th>
-        </tr>
+        
       </thead>
 
     </table>
