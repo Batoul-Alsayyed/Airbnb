@@ -290,3 +290,57 @@ table .header-class{
 .nav-container-items .box-item .user{
   margin-left: 13px;
 }
+.sub-container{
+  display: flex;
+  flex-direction: row;
+  border-bottom: 1.5px solid rgb(163, 153, 153);
+}
+.sub-container .sub-item{
+  margin: 30px;
+}
+.content-container{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+.content-stays {
+  margin: 30px;
+  border-bottom: 1.5px solid rgb(124, 115, 115);
+ border-radius: 15px;
+ width: 10px;
+ width: 250px;
+ display: flex;
+ flex-basis: column;
+ justify-content: center;
+ align-items: center;
+}
+.content-stays img{
+  width: 95%;
+  border-radius: 15px;
+}
+.content-stays .stays-item{
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+.content-stays .stays-item .icon{
+  position: absolute;
+  right: 30px;
+  top: 15px;
+}
+.content-stays .stays-item .rate{
+  float: right;
+  margin-right: 30px;
+}
+.content-stays .stays-item div{
+  flex-direction: row;
+  display: flex;
+  justify-content: space-between;
+}
+.content-stays .stays-item div p{
+  margin: 2px;
+  justify-content: space-around;
+  font-size: small;
+  flex-basis: 50%;
+}
