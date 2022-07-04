@@ -28,7 +28,7 @@ class ImageController extends Controller{
     }
     public function addImage(Request $request){
         $validator = Validator::make($request->all(), [
-            'image_link' => 'required|string|between:2,1000',
+            'image_link' => 'required|string',
             'stay_id'=> 'required|integer',
         ]);
         if($validator->fails()){
