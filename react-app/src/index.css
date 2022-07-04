@@ -251,38 +251,40 @@ table .header-class{
 .hide{
   display: none;
 }
-.nav-container{
-  display: flex;
-  margin: 5px;
-  justify-content: space-around;
-}
+
 .row{
   border-bottom: 1.5px solid rgb(163, 153, 153);
 }
 .row img{
   width: 100px;
-  height: 80px;
+  height: 50px;
 }
 .search-bar{
   border-radius: 25px;
   box-shadow: #666;
   border: 1.5px solid rgb(163, 153, 153);
-  padding: 25px;
+  padding: 15px;
+}
+.nav-container{
+  display: flex;
+  margin: 5px;
+  justify-content: space-around;
+  max-height: 50px;
 }
 .nav-container-items{
   display: flex;
   flex-direction: row;
 }
 .nav-container-items .item{
-  margin: 10px;
-  margin-top: 30px;
+  margin: 5px;
+  margin-top: 15px;
 }
 .nav-container-items .box-item{
   
   border-radius: 25px;
   box-shadow: #666;
   border: 1.5px solid rgb(163, 153, 153);
-  padding: 25px;
+  padding: 10px;
   width: 100px;
 }
 .nav-container-items .box-item .user{
@@ -290,16 +292,17 @@ table .header-class{
 }
 .sub-container{
   display: flex;
-  flex-direction: row;
   border-bottom: 1.5px solid rgb(163, 153, 153);
+  flex-wrap: wrap;
+  justify-content: center;
 }
 .sub-container .sub-item{
-  margin: 30px;
+  margin: 10px;
 }
 .content-container{
   display: flex;
-  flex-direction: row;
-  justify-content: center;
+  justify-content: start;
+  flex-wrap: wrap;
 }
 .content-stays {
   margin: 30px;
@@ -341,4 +344,7 @@ table .header-class{
   justify-content: space-around;
   font-size: small;
   flex-basis: 50%;
+}
+.sub-container .sub-item img{
+  width: 25px;
 }
