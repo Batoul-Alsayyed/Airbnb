@@ -38,6 +38,9 @@ Route::group([
    Route::post('/addLike', [StaysController::class, 'addLike']);
    Route::post('/getCategoryIdByCategoryName', [StaysController::class, 'getCategoryIdByCategoryName']);
    Route::post('/getStayByCategoryId', [StaysController::class, 'getStayByCategoryId']);
+   Route::post('/getStayByPriceRange', [StaysController::class, 'getStayByPriceRange']);
+//    Route::post('/getCategoryByName', [StaysController::class, 'getCategoryByName']);
+
    
 });
 
