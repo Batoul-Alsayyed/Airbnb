@@ -13,7 +13,7 @@ class CategoryController extends Controller{
      * @return void
      */
     public function __construct() {
-        $this->middleware('auth:api', ['except' => ['addCategory','getAllCategories','getCategoryById']]);
+        $this->middleware('auth:api', ['except' => ['addCategory','getAllCategories','getCategoryById','getCategoryByName']]);
     }
     public function getAllCategories(){
         $categories = Category::all();
@@ -30,6 +30,16 @@ class CategoryController extends Controller{
             return response()->json([
                 "status" => "Success",
                 "category" => $category
+            ], 200);
+
+    }
+    public function getCategoryByName(Request $request){
+        $category = Category::orderBy('created_at','desc')->get();
+        $category = Category::where('name', $request->name)->get();
+
+            return response()->json([
+                "status" => "Success",
+                "category_id" => $category.id
             ], 200);
 
     }
