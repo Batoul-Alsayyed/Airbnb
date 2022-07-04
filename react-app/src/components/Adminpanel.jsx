@@ -4,9 +4,10 @@ import logo from "../airbnb_logo_detail.jpg";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import axios from "axios";
 // import e from "cors";
+import FileBase64 from "react-file-base64";
 
 function Adminpanel() {
-
+  var s
   const [name, setName] = useState("");
   
   const [description, setDescription] = useState("");
@@ -29,21 +30,20 @@ function Adminpanel() {
     ).then(res => {
       console.log(res.data.category);
       // console.log('stayidtest ', stay_id_testt);
-
     }, );
   }
 
   function addStay(){
     axios.post(`http://127.0.0.1:8000/api/admin/add_stay`, {name: name, description: description, price: price, date: date, rate: rate, category_id: category_id}
     ).then(res => {
-      //console.log(res.data.stay.id);
+      console.log(res.data.stay.id);
       const stay_id_testt = res.data.stay.id;
       
       setStayId(stay_id_testt);
       console.log('stayidtest ', stay_id_testt);
 
-    },    );
-    axios.post(`http://127.0.0.1:8000/api/admin/add_image`, {image_link: image_link, stay_id: stay_id_test+1}
+    },);
+    axios.post(`http://127.0.0.1:8000/api/admin/add_image`, {image_link: s, stay_id: stay_id_test+1}
     ).then(res => {
       console.log(res);
     });
@@ -77,46 +77,57 @@ function Adminpanel() {
     document.getElementById('add_stay_btn').classList.add('hide');
     document.getElementById('add_category_btn').classList.add('hide');
   }
-
+ 
+  function getEncode(){
+    var element = document.getElementById("img_link");
+    var file = element.files[0];
+    var reader = new FileReader();
+    reader.onloadend = function () {
+      s = reader.result;
+      console.log(s);
+    };
+    reader.readAsDataURL(file);
+  }
   return (
+    <div className="App">
     <div className="admin-panel">
       {/* Admin panel */}
-      <div class="container2">
-        <div class="navigation">
+      <div className="container2">
+        <div className="navigation">
           <ul>
             <li id="logo">
               <a href="#">
-                <span class="icon">
+                <span className="icon">
                   <img src={logo} />
                 </span>
               </a>
             </li>
             <li id="dashboard">
               <a href="#">
-                <span class="icon">
-                  <i class="fa-solid fa-house-chimney"></i>
+                <span className="icon">
+                  <i className="fa-solid fa-house-chimney"></i>
                 </span>
-                <span class="title" onClick={dashboardOnClick}>
+                <span className="title" onClick={dashboardOnClick}>
                   Dashboard
                 </span>
               </a>
             </li>
             <li id="stays">
               <a href="#">
-                <span class="icon">
-                  <i class="fa-solid fa-cart-shopping"></i>
+                <span className="icon">
+                  <i className="fa-solid fa-cart-shopping"></i>
                 </span>
-                <span class="title" onClick={staysOnClick}>
+                <span className="title" onClick={staysOnClick}>
                   stays
                 </span>
               </a>
             </li>
             <li id="categories">
               <a href="#">
-                <span class="icon">
-                  <i class="fa-solid fa-basket-shopping"></i>
+                <span className="icon">
+                  <i className="fa-solid fa-basket-shopping"></i>
                 </span>
-                <span class="title" onClick={categoriesOnClick}>
+                <span className="title" onClick={categoriesOnClick}>
                   Categories
                 </span>
               </a>
@@ -127,7 +138,7 @@ function Adminpanel() {
       </div>
       <div className="container3">
         {/*displaying stays and categories tables  */}
-        <div class="stays-table">
+        <div className="stays-table">
 
           <form id="stays_table" className='hide'>
 
@@ -166,9 +177,11 @@ function Adminpanel() {
             
             <div className='form-group'>
                 <label htmlFor='description'>Image link: </label>
-                <input type="text" name="description" id="description"
-                 onChange={e => setImageLink(e.target.value)} value={image_link}
+                
+                <input type="file" id="img_link"
+                 onChange={() => getEncode()} value={image_link}
                  />
+
             </div>
 
 
@@ -209,9 +222,10 @@ function Adminpanel() {
           <br/>
           <br/>
           <br/>
-          <button onClick={addCategory} id="add_category_btn" className="">Add category</button>
+          <button onClick={addCategory} id="add_category_btn" className="hide">Add category</button>
         </div>
       </div>
+    </div>
     </div>
   );
 }
