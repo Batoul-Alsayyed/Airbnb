@@ -5,6 +5,9 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\Models\Stay;
 use Validator;
+use App\Models\Category;
+
+use App\Http\Controllers\CategoryController;
 
 class StaysController extends Controller{
       /**
@@ -13,7 +16,7 @@ class StaysController extends Controller{
      * @return void
      */
     public function __construct() {
-        $this->middleware('auth:api', ['except' => ['addStay','getAllStays','getStayById','addLike']]);
+        $this->middleware('auth:api', ['except' => ['addStay','getAllStays','getStayById','addLike','getCategoryIdByCategoryName','getStayByCategoryId']]);
     }
     public function getAllStays(){
         $stays = Stay::all();
@@ -33,7 +36,26 @@ class StaysController extends Controller{
             ], 200);
 
     }
-    
+    public function getCategoryIdByCategoryName(Request $request){
+        //get category name having category id 
+        
+        $id = Category::where('name',$request->category_name)->get();
+        
+            return response()->json([
+                "status" => "Success",
+                'category' => $id,
+            ], 200);
+
+    }
+    public function getStayByCategoryId(Request $request){
+        $stay = Stay::where('category_id', $request->category_id)->get();
+          
+        return response()->json([
+            "status" => "Success",
+            'stay' => $stay,
+        ], 200);
+
+    }
     //add like to a stay 
     public function addLike(Request $request){
         $stay = Stay::orderBy('created_at','desc')->get();
