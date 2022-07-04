@@ -16,7 +16,7 @@ class StaysController extends Controller{
      * @return void
      */
     public function __construct() {
-        $this->middleware('auth:api', ['except' => ['addStay','getAllStays','getStayById','addLike','getCategoryIdByCategoryName','getStayByCategoryId']]);
+        $this->middleware('auth:api', ['except' => ['addStay','getAllStays','getStayById','addLike','getCategoryIdByCategoryName','getStayByCategoryId','getStayByPriceRange']]);
     }
     public function getAllStays(){
         $stays = Stay::all();
@@ -47,6 +47,16 @@ class StaysController extends Controller{
             ], 200);
 
     }
+ 
+
+public function getStayByPriceRange(Request $request){
+    $stays=Stay::where("price" ,">", $request->min_price)->where("price" ,"<", $request->max_price)->where("category_id",$request->category_id)->get();
+    
+    return response()->json([
+        "status" => "Success",
+        'stays' => $stays,
+    ], 200);
+}
     public function getStayByCategoryId(Request $request){
         $stay = Stay::where('category_id', $request->category_id)->get();
           
